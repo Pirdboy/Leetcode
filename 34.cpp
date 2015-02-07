@@ -9,7 +9,7 @@ public:
         int mid=-1;
         int left=0;
         int right=n-1;
-        while(left<right){
+        while(left<=right){
             if(left+1==right){
                 if(A[left]==target){
                     mid=left;
@@ -30,49 +30,38 @@ public:
             else{
                 left=m;
             }
+            if(left==right)
+                break;
         }
         return mid;
     }
     vector<int> searchRange(int A[], int n, int target) {
         vector<int> answers(2);
-        if(n==1){
-            if(A[0]==target){
-                answers[0]=0;
-                answers[1]=0;
+        int pos=binarySearch(A,n,target);
+        if(pos>=0)
+        {
+            int start=-1;
+            int end=-1;
+            int i;
+            for(i=pos;i>=0;i--){
+                if(A[i]!=target){
+                    break;
+                }
             }
-            else{
-                answers[0]=-1;
-                answers[1]=-1;
+            start=i+1;
+            for(i=pos;i<n;i++){
+                if(A[i]!=target){
+                    break;
+                }
             }
+            end=i-1;
+            answers[0]=start;
+            answers[1]=end;
         }
         else{
-            int pos=binarySearch(A,n,target);
-            if(pos>=0)
-            {
-                int start=-1;
-                int end=-1;
-                int i;
-                for(i=pos;i>=0;i--){
-                    if(A[i]!=target){
-                        break;
-                    }
-                }
-                start=i+1;
-                for(i=pos;i<n;i++){
-                    if(A[i]!=target){
-                        break;
-                    }
-                }
-                end=i-1;
-                answers[0]=start;
-                answers[1]=end;
-            }
-            else{
-                answers[0]=-1;
-                answers[1]=-1;
-            }
+            answers[0]=-1;
+            answers[1]=-1;
         }
-
         return answers;
     }
 };
