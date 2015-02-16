@@ -1,6 +1,5 @@
 //Title:Combination Sum 
-//递归枚举,但是可以利用类似贪心的思想
-//先用candidates[index]将ans填满，然后不断减少candidatas[index],再测试candidatas[index+1]
+//回朔
 class Solution {
 private:
     void backTracking(vector<vector<int> >& answers,vector<int>& ans,int index,vector<int> &candidates,int target){
