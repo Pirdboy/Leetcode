@@ -1,4 +1,6 @@
 //Title:Rotate Array
+//Note:
+//Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.
 class Solution {
 public:
     void rotate(int nums[], int n, int k) {
